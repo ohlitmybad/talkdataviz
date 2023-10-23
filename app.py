@@ -12,29 +12,20 @@ import subprocess
 
 
 
-def setOpenAIKey(key):
-    os.environ['OPENAI_API_KEY'] = key
+OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
+def setOpenAIKey():
+    os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
 
 def get_text(n):
     input_text = st.text_input('', key="input{}".format(n))
     return input_text
 
-
-
-
 def main():
     st.title("DataMB Chat ⚽")
-    openai_key = st.sidebar.text_input('Open AI API KEY', key="openai_key", type="password")
-    if st.sidebar.button('Update Key'):
-        setOpenAIKey(openai_key)
-    st.sidebar.title('Process')
+    setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
-    st.session_state["tabs"].clear()
-    for df_name in selected_df_names:
-        st.session_state.tabs.append(df_name)
-        tabs = st.tabs([s.center(9, "\u2001") for s in st.session_state["tabs"]])
-
+    
     st.header("")
     if st.button('Refresh visuals'):
         current_dir = os.getcwd()
