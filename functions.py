@@ -25,7 +25,7 @@ def save_chart(query):
 
 def save_uploaded_file():
     df = load_dataframe("data.csv")  # Load the "data.csv" file
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, return_intermediate_steps=True,
+    agent = create_pandas_dataframe_agent(OpenAI(model_name='text-davinci-003', temperature=0.2), df, return_intermediate_steps=True,
                                           save_charts=True, verbose=True)
     return agent, df, ["data.csv"]
 
