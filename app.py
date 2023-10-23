@@ -22,7 +22,6 @@ def get_text(n):
 
 def show_data(tabs, df_arr):
         for i, df_ in enumerate(df_arr):
-        with tabs[i]:
             st.dataframe(df_)
 
 
