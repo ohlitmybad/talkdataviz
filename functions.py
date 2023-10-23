@@ -23,33 +23,15 @@ def save_chart(query):
     return query
 
 
-def save_uploaded_file(uploaded_file):
-    with open(uploaded_file.name, "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    df_arr, df_arr_names = load_dataframe()
-
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df_arr, return_intermediate_steps=True,
+def save_uploaded_file():
+    df = load_dataframe("data.csv")  # Load the "data.csv" file
+    agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, return_intermediate_steps=True,
                                           save_charts=True, verbose=True)
-    return agent, df_arr, df_arr_names
+    return agent, df, ["data.csv"]
 
-
-def load_dataframe():
-    selected_df = []
-
-    all_files_csv = glob.glob("*.csv")
-    all_files_xlsx = glob.glob("*.xlsx")
-    all_files_xls = glob.glob("*.xls")
-    for filename in all_files_csv:
-        df = pd.read_csv(filename)
-        selected_df.append(df)
-    for filename in all_files_xlsx:
-        df = pd.read_excel(filename)
-        selected_df.append(df)
-    for filename in all_files_xls:
-        df = pd.read_excel(filename)
-        selected_df.append(df)
-    selected_df_names = all_files_csv + all_files_xlsx + all_files_xls
-    return selected_df, selected_df_names
+def load_dataframe(filename):
+    df = pd.read_csv(filename)
+    return [df]
 
 
 def run_query(agent, query_):
