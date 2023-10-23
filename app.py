@@ -59,13 +59,7 @@ def main():
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
 
-        # Display the plots
-        for i in range(0, len(thought)):
-            st.sidebar.write(thought[i])
-            st.sidebar.write(action[i])
-            st.sidebar.write(action_input[i])
-            st.sidebar.write(observation[i])
-            st.sidebar.write('====')
+
 
 
 
