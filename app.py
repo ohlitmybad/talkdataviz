@@ -29,7 +29,7 @@ def show_data(tabs, df_arr):
 
 
 def main():
-    st.title("Demo Agent")
+    st.title("DataMB Chat ⚽")
     openai_key = st.sidebar.text_input('Open AI API KEY', key="openai_key", type="password")
     if st.sidebar.button('Update Key'):
         setOpenAIKey(openai_key)
