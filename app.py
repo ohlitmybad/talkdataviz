@@ -20,7 +20,8 @@ def get_text(n):
     input_text = st.text_input('', key="input{}".format(n))
     return input_text
 
-
+def show_data(tabs, df_arr):
+            st.dataframe(df_)
 
 
 def main():
