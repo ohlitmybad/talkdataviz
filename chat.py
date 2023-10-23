@@ -11,43 +11,11 @@ import enum
 class AgentType(enum.Enum):
     PANDAS_AGENT = "pandas_agent"
 
-file_formats = {
-    "csv": pd.read_csv,
-    "xls": pd.read_excel,
-    "xlsx": pd.read_excel,
-    "xlsm": pd.read_excel,
-
-}
 
 
 def clear_submit():
     st.session_state["submit"] = False
 
-
-def load_data(file_path):
-    try:
-        ext = os.path.splitext(file_path)[1][1:].lower()
-    except:
-        ext = file_path.split(".")[-1]
-    if ext in file_formats:
-        df = file_formats[ext](file_path)
-        return df
-    else:
-        st.error(f"Unsupported file format: {ext}")
-        return None
-
-
-st.set_page_config(page_title="LangChain: Chat with Pandas DataFrame", page_icon="🦜")
-st.title("🦜 LangChain: Chat with Pandas DataFrame")
-
-data_directory = "csv"  # Replace with the path to the directory containing your files
-
-file_list = os.listdir(data_directory)
-selected_file = st.selectbox("Select a Data file", file_list, help="Various File formats are Support")
-
-if selected_file:
-    file_path = os.path.join(data_directory, selected_file)
-    df = load_data(file_path)
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
