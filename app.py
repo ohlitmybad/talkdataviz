@@ -21,11 +21,6 @@ def get_text(n):
     return input_text
 
 
-def show_data(tabs, df_arr):
-    for i, df_ in enumerate(df_arr):
-        print(i, len(df_))
-        with tabs[i]:
-            st.dataframe(df_)
 
 
 def main():
@@ -33,18 +28,12 @@ def main():
     openai_key = st.sidebar.text_input('Open AI API KEY', key="openai_key", type="password")
     if st.sidebar.button('Update Key'):
         setOpenAIKey(openai_key)
-    st.sidebar.title('Thinking Process')
-    uploaded_file = st.file_uploader("Choose files to upload (csv, xls, xlsx)", type=["csv", "xls", "xlsx"],
-                                     accept_multiple_files=True)
-    agent = ''
-    if uploaded_file:
-        for file in uploaded_file:
-            agent, selected_df, selected_df_names = save_uploaded_file(file)
-        st.session_state["tabs"].clear()
-        for df_name in selected_df_names:
-            st.session_state.tabs.append(df_name)
+    st.sidebar.title('Process')
+    agent, selected_df, selected_df_names = save_uploaded_file()
+    st.session_state["tabs"].clear()
+    for df_name in selected_df_names:
+        st.session_state.tabs.append(df_name)
         tabs = st.tabs([s.center(9, "\u2001") for s in st.session_state["tabs"]])
-        show_data(tabs, selected_df)
 
     st.header("")
     if st.button('Refresh visuals'):
