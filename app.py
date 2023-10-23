@@ -21,6 +21,11 @@ def get_text(n):
     return input_text
 
 
+def show_data(tabs, df_arr):
+    for i, df_ in enumerate(df_arr):
+        print(i, len(df_))
+        with tabs[i]:
+            st.dataframe(df_)
 
 
 def main():
@@ -39,6 +44,7 @@ def main():
         for df_name in selected_df_names:
             st.session_state.tabs.append(df_name)
         tabs = st.tabs([s.center(9, "\u2001") for s in st.session_state["tabs"]])
+        show_data(tabs, selected_df)
 
     st.header("")
     if st.button('Refresh visuals'):
