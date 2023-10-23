@@ -8,3 +8,4 @@ tabulate
 pygal
 plotly
 plotnine
+kaleido
