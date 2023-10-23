@@ -21,11 +21,6 @@ def get_text(n):
     return input_text
 
 
-def show_data(tabs, df_arr):
-    for i, df_ in enumerate(df_arr):
-        print(i, len(df_))
-        with tabs[i]:
-            st.dataframe(df_)
 
 
 def main():
