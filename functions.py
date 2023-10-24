@@ -10,7 +10,7 @@ from langchain.memory import ConversationBufferMemory
 
 
 from langchain.agents import create_pandas_dataframe_agent
-from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 import pandas as pd
 import glob
 import json
@@ -25,7 +25,7 @@ def save_chart(query):
 
 def save_uploaded_file():
     df = load_dataframe("data.csv")  # Load the "data.csv" file
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0.2), df, return_intermediate_steps=True,
+    agent = create_pandas_dataframe_agent(ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0.2), df, return_intermediate_steps=True,
                                           save_charts=True, verbose=True)
     return agent, df, ["data.csv"]
 
