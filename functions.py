@@ -10,7 +10,7 @@ from langchain.memory import ConversationBufferMemory
 
 
 from langchain.agents import create_pandas_dataframe_agent
-from langchain.llm import OpenAI
+from langchain.llms import OpenAI
 import pandas as pd
 import glob
 import json
