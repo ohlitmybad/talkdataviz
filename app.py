@@ -10,15 +10,7 @@ import numpy as np
 import subprocess
 import datetime
 
-st.write(
-    """
-    <style>
-    div[data-widget="stMultiselect"] .st-ae {
-        display: none;
-    }
-    </style>
-    """
-)
+st.markdown('<div style="height: 0; visibility: hidden;"></div>', unsafe_allow_html=True)
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
