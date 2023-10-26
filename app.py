@@ -10,13 +10,15 @@ import streamlit as st
 import numpy as np
 import subprocess
 
+
+
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
 def setOpenAIKey():
     os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
 
 def get_text(n):
-    input_text = st.text_area('', key="input{}".format(n), value="", height=50, placeholder='Enter query here ...')
+    input_text = st.text_input('', key="input{}".format(n), height=40, placeholder='Enter query here ...')
     return input_text
 
 def main():
@@ -42,26 +44,24 @@ def main():
         st.write(img)
 
     st.header("")
+    x = 0
+    user_input = get_text(x)
+    if st.button('Query'):
+        x += 1
+        print(user_input, len(user_input))
+        response, thought, action, action_input, observation = run_query(agent, user_input)
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(response)
 
-    col1, col2 = st.beta_columns([3, 1])
+        # Display the generated response messages
+        for i in range(len(st.session_state['generated']) - 1, -1, -1):
+            message(st.session_state["generated"][i], key=str(i))
+            message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
-    with col1:
-        x = 0
-        user_input = get_text(x)
 
-    with col2:
-        if st.button('↣'):
-            x += 1
-            print(user_input, len(user_input))
-            response, thought, action, action_input, observation = run_query(agent, user_input)
-            st.session_state.past.append(user_input)
-            st.session_state.generated.append(response)
 
-            # Display the generated response messages
-            for i in range(len(st.session_state['generated']) - 1, -1, -1):
-                message(st.session_state["generated"][i], key=str(i))
-                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-    
+
+
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
