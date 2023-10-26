@@ -63,7 +63,7 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_images = st.multiselect(imgs_)
+        selected_images = st.multiselect("", imgs_)
         if st.button("Remove Selected"):
             for img in selected_images:
                 os.remove(img)
