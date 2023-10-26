@@ -67,7 +67,7 @@ def main():
     agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
-    username = st.text_input('Username:')
+    username = st.text_input('', placeholder='Username')
     
     st.header("")
     if st.button('📊'):
