@@ -69,7 +69,21 @@ def main():
     # User login
     username = st.text_input('', placeholder='Username')
     
-
+    if st.button('Load visuals'):
+        current_dir = os.getcwd()
+        if platform.system() == "Darwin":  # macOS
+            subprocess.Popen(["open", current_dir])
+        elif platform.system() == "Windows":
+            subprocess.Popen(["explorer", current_dir])
+        else:
+            print("Directory opened:", current_dir)
+    imgs_png = glob.glob('*.png')
+    imgs_jpg = glob.glob('*.jpg')
+    imgs_jpeeg = glob.glob('*.jpeg')
+    imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
+    if len(imgs_) > 0:
+        img = image_select("", imgs_, captions=imgs_, return_value='index')
+        st.write(img)
 
     query_counts = load_query_counts()
 
@@ -101,21 +115,7 @@ def main():
     else:
         st.error('User not found. Please check your username.')
 
-    if st.button('Load visuals'):
-        current_dir = os.getcwd()
-        if platform.system() == "Darwin":  # macOS
-            subprocess.Popen(["open", current_dir])
-        elif platform.system() == "Windows":
-            subprocess.Popen(["explorer", current_dir])
-        else:
-            print("Directory opened:", current_dir)
-    imgs_png = glob.glob('*.png')
-    imgs_jpg = glob.glob('*.jpg')
-    imgs_jpeeg = glob.glob('*.jpeg')
-    imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
-    if len(imgs_) > 0:
-        img = image_select("", imgs_, captions=imgs_, return_value='index')
-        st.write(img)
+
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
