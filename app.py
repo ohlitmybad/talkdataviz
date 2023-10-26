@@ -1,16 +1,15 @@
 import os
 import streamlit as st
-from functions import *
 import platform
+import subprocess
 import openai
+import numpy as np
+import matplotlib.pyplot as plt
+import glob
+
+from functions import *
 from streamlit_chat import message
 from streamlit_image_select import image_select
-import matplotlib.pyplot as plt
-import streamlit as st
-import numpy as np
-import subprocess
-
-
 
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
@@ -35,10 +34,12 @@ def main():
             subprocess.Popen(["explorer", current_dir])
         else:
             print("Directory opened:", current_dir)
+    
     imgs_png = glob.glob('*.png')
     imgs_jpg = glob.glob('*.jpg')
     imgs_jpeeg = glob.glob('*.jpeg')
     imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
+    
     if len(imgs_) > 0:
         img = image_select("", imgs_, captions=imgs_, return_value='index')
         st.write(img)
@@ -46,7 +47,10 @@ def main():
     st.header("")
     x = 0
     user_input = get_text(x)
-    if st.button('Query'):
+
+    query_button = st.button('Query', key="query_button")
+
+    if query_button:
         x += 1
         print(user_input, len(user_input))
         response, thought, action, action_input, observation = run_query(agent, user_input)
@@ -57,11 +61,6 @@ def main():
         for i in range(len(st.session_state['generated']) - 1, -1, -1):
             message(st.session_state["generated"][i], key=str(i))
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-
-
-
-
-
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
