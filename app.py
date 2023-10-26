@@ -10,7 +10,6 @@ import numpy as np
 import subprocess
 import datetime
 
-
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
 
@@ -22,7 +21,7 @@ DAILY_QUERY_LIMIT = 2
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
 def get_text():
-    input_text = st.text_area('', value="", placeholder='Enter query here ...')
+    input_text = st.text_area('', value="", height=20, placeholder='Enter query here ...')
     return input_text
     
 def setOpenAIKey():
@@ -62,25 +61,16 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
-def custom_image_selector(imgs_):
-    if len(imgs_) > 0:
-        selected_images = st.multiselect("", imgs_)
-        if st.button("Delete visuals"):
-            for img in selected_images:
-                os.remove(img)
-            st.experimental_rerun()
-        return image_select("", imgs_, captions=imgs_, return_value='index')
-
-
 def main():
-    st.title("DataMB Chat ⚽📊")
+    st.title("DataMB Chat ⚽")
     setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
     username = st.text_input('', placeholder='Username')
     
-    if st.button('Load visuals'):
+    st.header("")
+    if st.button('📊'):
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
@@ -92,9 +82,12 @@ def main():
     imgs_jpg = glob.glob('*.jpg')
     imgs_jpeeg = glob.glob('*.jpeg')
     imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
+    if len(imgs_) > 0:
+        img = image_select("", imgs_, captions=imgs_, return_value='index')
+        st.write(img)    
     
-    custom_image_selector(imgs_)
-    
+
+
     query_counts = load_query_counts()
 
     if user_exists(username):
@@ -124,8 +117,6 @@ def main():
             st.error('Daily query limit (25) reached for this user.')
     else:
         st.error('User not found. Please check your username.')
-
-
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
