@@ -16,10 +16,6 @@ OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 def setOpenAIKey():
     os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
 
-def get_text(n):
-    input_text = st.text_input('', key="input{}".format(n), placeholder='Enter query here ...')
-    return input_text
-
 def main():
     st.title("DataMB Chat ⚽📊")
     setOpenAIKey()
@@ -45,13 +41,10 @@ def main():
         st.write(img)
 
     st.header("")
-    x = 0
-    user_input = get_text(x)
 
-    query_button = st.button('Query', key="query_button")
+    user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
 
-    if query_button:
-        x += 1
+    if st.button('Query'):
         print(user_input, len(user_input))
         response, thought, action, action_input, observation = run_query(agent, user_input)
         st.session_state.past.append(user_input)
