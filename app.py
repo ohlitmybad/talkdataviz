@@ -21,7 +21,7 @@ DAILY_QUERY_LIMIT = 2
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
 def get_text():
-    input_text = st.text_area('', value="", height=10, placeholder='Enter query here ...')
+    input_text = st.text_area('', value="", height=1, placeholder='Enter query here ...')
     return input_text
     
 def setOpenAIKey():
