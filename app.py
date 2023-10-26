@@ -45,7 +45,7 @@ def main():
     col1, col2 = st.beta_columns([3, 1])
     
     with col1:
-        user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
+        user_input = st.text_input('', key="user_input", placeholder='Enter query here ...')
 
     with col2:
         if st.button('Query'):
