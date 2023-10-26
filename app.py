@@ -44,6 +44,7 @@ def main():
     st.header("")
     x = 0
     user_input = get_text(x)
+    user_input_container = st.beta_container()
     if st.button('Query'):
         x += 1
         print(user_input, len(user_input))
@@ -55,6 +56,10 @@ def main():
         for i in range(len(st.session_state['generated']) - 1, -1, -1):
             message(st.session_state["generated"][i], key=str(i))
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+            
+    with user_input_container:
+        st.write('<span style="color: green; font-size: 30px;">&#10148;</span>', unsafe_allow_html=True)
+        st.markdown(user_input, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
