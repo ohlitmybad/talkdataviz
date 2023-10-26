@@ -61,6 +61,9 @@ def main():
             for i in range(len(st.session_state['generated']) - 1, -1, -1):
                 message(st.session_state["generated"][i], key=str(i))
                 message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+    
+    # Add a spacer to lower the input and button
+    st.markdown("<br>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
