@@ -10,6 +10,16 @@ import numpy as np
 import subprocess
 import datetime
 
+st.write(
+    """
+    <style>
+    div[data-widget="stMultiselect"] .st-ae {
+        display: none;
+    }
+    </style>
+    """
+)
+
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
 
