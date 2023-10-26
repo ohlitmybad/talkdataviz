@@ -22,7 +22,7 @@ def get_text(n):
     return input_text
 
 def main():
-    st.title("DataMB Chat ⚽")
+    st.title("DataMB Chat ⚽📊")
     setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
     
