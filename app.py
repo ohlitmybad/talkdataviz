@@ -18,6 +18,9 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 2
 
+OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+
+
 def setOpenAIKey():
     os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
 
