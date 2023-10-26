@@ -27,7 +27,7 @@ def main():
     agent, selected_df, selected_df_names = save_uploaded_file()
     
     st.header("")
-    if st.button('Refresh visuals'):
+    if st.button('📷'):
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
