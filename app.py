@@ -62,7 +62,7 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     return False
 
 def main():
-    st.title("DataMB Chat ⚽")
+    st.title("DataMB Chat ⚽📊")
     setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
 
@@ -70,7 +70,7 @@ def main():
     username = st.text_input('', placeholder='Username')
     
     st.header("")
-    if st.button('📊'):
+    if st.button('Load visuals'):
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
