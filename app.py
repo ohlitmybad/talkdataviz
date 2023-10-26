@@ -42,9 +42,26 @@ def main():
 
     st.header("")
 
-    user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
+    # Use custom CSS to adjust layout
+    st.markdown(
+        """
+        <style>
+        .stTextInput > div {
+            display: flex;
+            align-items: center;
+        }
+        .stTextInput > div > div {
+            flex-grow: 1;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    if st.button('Query'):
+    user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
+    query_button = st.button('Query')
+
+    if query_button:
         print(user_input, len(user_input))
         response, thought, action, action_input, observation = run_query(agent, user_input)
         st.session_state.past.append(user_input)
