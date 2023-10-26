@@ -42,35 +42,22 @@ def main():
 
     st.header("")
 
-    # Use custom CSS to adjust layout
-    st.markdown(
-        """
-        <style>
-        .stTextInput > div {
-            display: flex;
-            align-items: center;
-        }
-        .stTextInput > div > div {
-            flex-grow: 1;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    col1, col2 = st.beta_columns([3, 1])
+    
+    with col1:
+        user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
 
-    user_input = st.text_input('Enter your query:', key="user_input", placeholder='Enter query here ...')
-    query_button = st.button('Query')
+    with col2:
+        if st.button('Query'):
+            print(user_input, len(user_input))
+            response, thought, action, action_input, observation = run_query(agent, user_input)
+            st.session_state.past.append(user_input)
+            st.session_state.generated.append(response)
 
-    if query_button:
-        print(user_input, len(user_input))
-        response, thought, action, action_input, observation = run_query(agent, user_input)
-        st.session_state.past.append(user_input)
-        st.session_state.generated.append(response)
-
-        # Display the generated response messages
-        for i in range(len(st.session_state['generated']) - 1, -1, -1):
-            message(st.session_state["generated"][i], key=str(i))
-            message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+            # Display the generated response messages
+            for i in range(len(st.session_state['generated']) - 1, -1, -1):
+                message(st.session_state["generated"][i], key=str(i))
+                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
