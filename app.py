@@ -63,9 +63,10 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_index = st.selectbox("", range(len(imgs_)))
-        if st.button("Remove Selected"):
-            os.remove(imgs_[selected_index])
+        selected_images = st.multiselect("", imgs_)
+        if st.button("Delete visuals"):
+            for img in selected_images:
+                os.remove(img)
             st.experimental_rerun()
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
