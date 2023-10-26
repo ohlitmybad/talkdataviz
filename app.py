@@ -63,15 +63,13 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_images = st.multiselect("Select images to remove", imgs_)
+        selected_images = st.multiselect("Delete visuals", imgs_)
         if st.button("Remove Selected"):
             for img in selected_images:
                 os.remove(img)
             st.success("Selected images removed.")
             st.experimental_rerun()
         return st.image(imgs_, width=200, caption=imgs_)
-    else:
-        st.info("No images available in the gallery.")
 
 def main():
     st.title("DataMB Chat ⚽📊")
@@ -89,7 +87,6 @@ def main():
             subprocess.Popen(["explorer", current_dir])
         else:
             print("Directory opened:", current_dir)
-    st.header("Image Gallery")
     imgs_png = glob.glob('*.png')
     imgs_jpg = glob.glob('*.jpg')
     imgs_jpeeg = glob.glob('*.jpeg')
