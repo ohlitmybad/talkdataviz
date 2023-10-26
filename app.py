@@ -63,12 +63,12 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_images = st.multiselect("", imgs_)
+        selected_index = st.selectbox("", range(len(imgs_)))
         if st.button("Remove Selected"):
-            for img in selected_images:
-                os.remove(img)
+            os.remove(imgs_[selected_index])
             st.experimental_rerun()
         return image_select("", imgs_, captions=imgs_, return_value='index')
+
 
 def main():
     st.title("DataMB Chat ⚽📊")
