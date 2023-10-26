@@ -50,7 +50,7 @@ def main():
         user_input = get_text(x)
 
     with col2:
-        if st.button('Query'):
+        if st.button('↣'):
             x += 1
             print(user_input, len(user_input))
             response, thought, action, action_input, observation = run_query(agent, user_input)
@@ -62,8 +62,6 @@ def main():
                 message(st.session_state["generated"][i], key=str(i))
                 message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
     
-    # Add a spacer to lower the input and button
-    st.markdown("<br>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
