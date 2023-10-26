@@ -61,6 +61,20 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
+def display_image_gallery(imgs_):
+    if len(imgs_) > 0:
+        selected_images = st.multiselect("Select images to remove", imgs_)
+        if st.button("Remove Selected"):
+            for img in selected_images:
+                os.remove(img)
+            st.success("Selected images removed.")
+            st.experimental_rerun()
+
+        img = image_select("", imgs_, captions=imgs_, return_value='index')
+        st.write(img)
+    else:
+        st.info("")
+
 def main():
     st.title("DataMB Chat ⚽📊")
     setOpenAIKey()
@@ -82,22 +96,13 @@ def main():
     imgs_jpeeg = glob.glob('*.jpeg')
     imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
     
-    if len(imgs_) > 0:
-        selected_images = st.multiselect("Select images to remove", imgs_)
-        if st.button("Remove Selected"):
-            for img in selected_images:
-                os.remove(img)
-            st.success("Selected images removed.")
-            st.experimental_rerun()
-
-        img = image_select("", imgs_, captions=imgs_, return_value='index')
-        st.write(img)
-    else:
-        st.info("No images available in the gallery.")
+    display_image_gallery(imgs_)
 
     # Display the remaining images in the gallery
     img = image_select("", imgs_, captions=imgs_, return_value='index')
     st.write(img)
+
+    
     query_counts = load_query_counts()
 
     if user_exists(username):
