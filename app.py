@@ -10,16 +10,6 @@ import numpy as np
 import subprocess
 import datetime
 
-st.write(
-    """
-    <style>
-    div[data-baseweb="select"] div:first-child {
-        display: none !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
