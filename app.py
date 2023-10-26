@@ -66,6 +66,9 @@ def main():
     setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
 
+    # User login
+    username = st.text_input('Username:')
+    
     st.header("")
     if st.button('📊'):
         current_dir = os.getcwd()
@@ -83,8 +86,7 @@ def main():
         img = image_select("", imgs_, captions=imgs_, return_value='index')
         st.write(img)    
     
-    # User login
-    username = st.text_input('Username:')
+
 
     query_counts = load_query_counts()
 
