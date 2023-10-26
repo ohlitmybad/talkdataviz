@@ -77,7 +77,6 @@ def main():
             subprocess.Popen(["explorer", current_dir])
         else:
             print("Directory opened:", current_dir)
-        st.header("Image Gallery")
     imgs_png = glob.glob('*.png')
     imgs_jpg = glob.glob('*.jpg')
     imgs_jpeeg = glob.glob('*.jpeg')
