@@ -17,7 +17,7 @@ USERS_FILE = 'users.txt'
 # Define a file to store user query counts
 QUERY_COUNT_FILE = 'query_counts.txt'
 
-DAILY_QUERY_LIMIT = 2
+DAILY_QUERY_LIMIT = 15
 
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
@@ -121,7 +121,7 @@ def main():
 
 
         else:
-            st.error('Daily query limit (25) reached for this user.')
+            st.error('Daily query limit (15) reached for this user.')
     else:
         st.error('User not found. Please check your username.')
 
