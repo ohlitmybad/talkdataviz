@@ -20,7 +20,7 @@ DAILY_QUERY_LIMIT = 2
 
 OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
-def get_text(n):
+def get_text():
     input_text = st.text_area('', key="input{}".format(n), value="", height=20, placeholder='Enter query here ...')
     return input_text
     
@@ -93,12 +93,9 @@ def main():
                 query_counts[username] = user_data
                 save_query_counts(query_counts)
 
-            st.header("Query Limit Information")
-            st.write(f"User: {username}")
-            st.write(f"Queries today: {user_data.get(today, 0)}")
 
         else:
-            st.error('Query limit reached for today. You have exceeded the daily limit.')
+            st.error('Query limit (25 successful queries per day) reached for this user.')
     else:
         st.error('User not found. Please check your username.')
 
