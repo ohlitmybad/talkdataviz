@@ -63,8 +63,6 @@ def main():
     setOpenAIKey()
     agent, selected_df, selected_df_names = save_uploaded_file()
 
-    st.header("User Login and Query Counting")
-
     # User login
     username = st.text_input('Username:')
 
@@ -72,7 +70,6 @@ def main():
 
     if user_exists(username):
         if not is_query_limit_reached(username, query_counts):
-            st.header('Chat with the AI')
 
             user_input = get_text()
 
