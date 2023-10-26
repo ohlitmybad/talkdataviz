@@ -42,24 +42,25 @@ def main():
         st.write(img)
 
     st.header("")
-    x = 0
-    user_input = get_text(x)
-    user_input_container = st.beta_container()
-    if st.button('Query'):
-        x += 1
-        print(user_input, len(user_input))
-        response, thought, action, action_input, observation = run_query(agent, user_input)
-        st.session_state.past.append(user_input)
-        st.session_state.generated.append(response)
 
-        # Display the generated response messages
-        for i in range(len(st.session_state['generated']) - 1, -1, -1):
-            message(st.session_state["generated"][i], key=str(i))
-            message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-            
-    with user_input_container:
-        st.write('<span style="color: green; font-size: 30px;">&#10148;</span>', unsafe_allow_html=True)
-        st.markdown(user_input, unsafe_allow_html=True)
+    col1, col2 = st.beta_columns([3, 1])
+
+    with col1:
+        x = 0
+        user_input = get_text(x)
+
+    with col2:
+        if st.button('Query'):
+            x += 1
+            print(user_input, len(user_input))
+            response, thought, action, action_input, observation = run_query(agent, user_input)
+            st.session_state.past.append(user_input)
+            st.session_state.generated.append(response)
+
+            # Display the generated response messages
+            for i in range(len(st.session_state['generated']) - 1, -1, -1):
+                message(st.session_state["generated"][i], key=str(i))
+                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
