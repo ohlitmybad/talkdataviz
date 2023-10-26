@@ -67,7 +67,6 @@ def custom_image_selector(imgs_):
         if st.button("Remove Selected"):
             for img in selected_images:
                 os.remove(img)
-            st.success("Selected images removed.")
             st.experimental_rerun()
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
