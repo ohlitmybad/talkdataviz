@@ -18,7 +18,7 @@ def setOpenAIKey():
     os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
 
 def get_text(n):
-    input_text = st.text_input('', key="input{}".format(n))
+    input_text = st.text_input('', key="input{}".format(n), placeholder='Enter query here ...')
     return input_text
 
 def main():
