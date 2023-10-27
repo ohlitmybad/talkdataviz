@@ -63,7 +63,7 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
-def return_image_select(imgs_):
+def custom_image_selector(imgs_):
     if len(imgs_) > 0:
         selected_images = st.multiselect("", imgs_)
         if st.button("Delete visuals"):
