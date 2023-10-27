@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import subprocess
 import datetime
+from streamlit import spinner as st_spinner
 
 
 # Define the path to the users.txt file
@@ -103,7 +104,8 @@ def main():
             user_input = get_text()
 
             if st.button('Query'):
-                response, thought, action, action_input, observation = run_query(agent, user_input)
+                with st_spinner("Loading..."):  # Use st_spinner to display a spinner while processing the query
+                    response, thought, action, action_input, observation = run_query(agent, user_input)
                 st.session_state.past.append(user_input)
                 st.session_state.generated.append(response)
 
