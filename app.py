@@ -66,12 +66,13 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_images = st.multiselect("Select Images:", imgs_)
+        selected_images = st.multiselect("", imgs_)
         
         if st.button("Delete visuals"):
             for img in selected_images:
                 os.remove(img)
-        
+            st.experimental_rerun()
+            
         if st.button("Download visuals"):
             for img in selected_images:
                 with open(img, "rb") as img_file:
@@ -79,6 +80,15 @@ def custom_image_selector(imgs_):
                     img_base64 = base64.b64encode(img_bytes).decode()
                 st.markdown(f'<a href="data:image/jpeg;base64,{img_base64}" download="{os.path.basename(img)}">Download {os.path.basename(img)}</a>', unsafe_allow_html=True)
 
+        return image_select("", imgs_, captions=imgs_, return_value='index')
+
+def custom_image_selector(imgs_):
+    if len(imgs_) > 0:
+        selected_images = st.multiselect("", imgs_)
+        if st.button("Delete visuals"):
+            for img in selected_images:
+                os.remove(img)
+            st.experimental_rerun()
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
 
