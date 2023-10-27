@@ -70,8 +70,11 @@ def custom_image_selector(imgs_):
             for img in selected_images:
                 os.remove(img)
             st.experimental_rerun()
-        return image_select("", imgs_, captions=imgs_, return_value='index')
 
+        # Display images and captions as clickable links
+        for i, (img, caption) in enumerate(zip(imgs_, imgs_)):
+            st.markdown(f"[![Image {i+1}]({img})]({img})")
+            st.markdown(f"[{caption}]({img})")
 
 
 def main():
