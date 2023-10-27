@@ -73,10 +73,10 @@ def custom_image_selector(imgs_):
             st.experimental_rerun()
         
         if st.button("Download visuals"):
+            download_dir = "path/to/download/"
             for img in selected_images:
-                # Add code to download the selected images here
-                # For example, you can use st.markdown and a download link
-                st.markdown(f"[Download {img}](path/to/download/{img})")
+                download_link = f"[Download {img}](data:application/octet-stream;base64,{base64.b64encode(open(os.path.join(download_dir, img), 'rb').read()).decode()})"
+                st.markdown(download_link, unsafe_allow_html=True)
                 
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
