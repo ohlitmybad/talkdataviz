@@ -75,10 +75,12 @@ def custom_image_selector(imgs_):
         
         if st.button("Download visuals"):
             for img in selected_images:
-                # Create a direct download link
-                st.markdown(f'<a href="{img}" download>Download {img}</a>', unsafe_allow_html=True)
+                # Generate a download link for the selected image
+                with open(img, "rb") as image_file:
+                    encoded_img = base64.b64encode(image_file.read()).decode()
+                st.markdown(f'<a href="data:image/png;base64,{encoded_img}" download="{os.path.basename(img)}">Download {os.path.basename(img)}</a>', unsafe_allow_html=True)
                 
-        return image_select("", imgs_, captions=imgs_, return_value='index')
+        return st.image([], caption=imgs_[0], use_container_width=True)
 
 
 def main():
