@@ -63,14 +63,20 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
-def custom_image_selector(imgs_):
+def return_image_select(imgs_):
     if len(imgs_) > 0:
         selected_images = st.multiselect("", imgs_)
         if st.button("Delete visuals"):
             for img in selected_images:
                 os.remove(img)
             st.experimental_rerun()
-        return image_select("", imgs_, captions=imgs_, return_value='index')
+
+        # Display images with anchor tags for clickable functionality
+        for img in imgs_:
+            st.write(f'<a href="{img}" target="_blank">{img}</a>', unsafe_allow_html=True)
+    
+    return st.empty()
+
 
 
 def main():
