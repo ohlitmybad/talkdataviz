@@ -65,11 +65,19 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 def custom_image_selector(imgs_):
     if len(imgs_) > 0:
-        selected_images = st.multiselect("", imgs_)
+        selected_images = st.multiselect("Select Images:", imgs_)
+        
         if st.button("Delete visuals"):
             for img in selected_images:
                 os.remove(img)
             st.experimental_rerun()
+        
+        if st.button("Download visuals"):
+            for img in selected_images:
+                # Add code to download the selected images here
+                # For example, you can use st.markdown and a download link
+                st.markdown(f"[Download {img}](path/to/download/{img})")
+                
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
 
