@@ -70,13 +70,12 @@ def custom_image_selector(imgs_):
         
         if st.button("Delete visuals"):
             for img in selected_images:
-                # Delete code here
-                pass
+                os.remove(img)
         
         if st.button("Download visuals"):
             for img in selected_images:
                 # Create a download link for each selected image
-                st.markdown(f'[Download {img}](data:image/jpeg;base64,{imgs_[img]})')
+                st.markdown(f'<a href="data:image/jpeg;base64,{img}" download="{os.path.basename(img)}">Download {os.path.basename(img)}</a>', unsafe_allow_html=True)
 
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
