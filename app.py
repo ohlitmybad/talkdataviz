@@ -71,7 +71,6 @@ def custom_image_selector(imgs_):
         if st.button("Delete visuals"):
             for img in selected_images:
                 os.remove(img)
-            st.experimental_rerun()
             
         if st.button("Download visuals"):
             for img in selected_images:
@@ -79,7 +78,8 @@ def custom_image_selector(imgs_):
                     img_bytes = img_file.read()
                     img_base64 = base64.b64encode(img_bytes).decode()
                 st.markdown(f'<a href="data:image/jpeg;base64,{img_base64}" download="{os.path.basename(img)}">Download {os.path.basename(img)}</a>', unsafe_allow_html=True)
-
+                
+            st.experimental_rerun()
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
 def custom_image_selector(imgs_):
