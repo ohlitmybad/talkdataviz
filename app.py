@@ -104,7 +104,8 @@ def main():
             user_input = get_text()
 
             if st.button('Query'):
-                response, thought, action, action_input, observation = run_query(agent, user_input)
+                with st_spinner(""):  # Use st_spinner to display a spinner while processing the query
+                    response, thought, action, action_input, observation = run_query(agent, user_input)
                 st.session_state.past.append(user_input)
                 st.session_state.generated.append(response)
 
