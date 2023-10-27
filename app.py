@@ -70,12 +70,7 @@ def custom_image_selector(imgs_):
             for img in selected_images:
                 os.remove(img)
             st.experimental_rerun()
-
-        # Display images with anchor tags for clickable functionality
-        for img in imgs_:
-            st.write(f'<a href="{img}" target="_blank">{img}</a>', unsafe_allow_html=True)
-    
-    return st.empty()
+        return image_select("", imgs_, captions=imgs_, return_value='index')
 
 
 
