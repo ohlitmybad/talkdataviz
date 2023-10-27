@@ -68,12 +68,12 @@ def custom_image_selector(imgs_):
     if len(imgs_) > 0:
         selected_images = st.multiselect("", imgs_)
         
-        if st.button("Delete visuals"):
+        if st.button("Delete"):
             for img in selected_images:
                 os.remove(img)
             st.experimental_rerun()
             
-        if st.button("Download visuals"):
+        if st.button("Download"):
             for img in selected_images:
                 with open(img, "rb") as img_file:
                     img_bytes = img_file.read()
