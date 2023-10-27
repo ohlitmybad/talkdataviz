@@ -10,6 +10,7 @@ import numpy as np
 import subprocess
 import datetime
 from streamlit import spinner as st_spinner
+import base64
 
 
 # Define the path to the users.txt file
