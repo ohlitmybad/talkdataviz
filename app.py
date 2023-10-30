@@ -21,14 +21,14 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-OPENAI_API_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+DATA_MB = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 
 def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
     return input_text
     
 def setOpenAIKey():
-    os.environ['OPENAI_API_KEY'] = "sk-" + OPENAI_API_KEY
+    os.environ['OPENAI_API_KEY'] = "sk-" + DATA_MB
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
