@@ -21,7 +21,7 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-DATA_MB = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+DATA_MB = "GP2vIp52sWTQSAjFtAxyT3BlbkFJnjQ8jGP8eflYjYHJuTSh"
 
 def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
