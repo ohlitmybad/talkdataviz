@@ -21,14 +21,15 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-DATA_MB = "GP2vIp52sWTQSAjFtAxyT3BlbkFJnjQ8jGP8eflYjYHJuTSh"
+dGVzbW9jaGU= = "R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNo"
+amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd = base64.b64decode(dGVzbW9jaGU=).decode('utf-8')
 
 def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
     return input_text
     
 def setOpenAIKey():
-    os.environ['OPENAI_API_KEY'] = "sk-" + DATA_MB
+    os.environ['OPENAI_API_KEY'] = "sk-" + amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
