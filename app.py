@@ -21,7 +21,7 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-dGVzbW9jaGU = "fxpndulcNgeYP10EbZzUT3BlbkFJHkXQJLa0SruZk2v1nXQg"
+dGVzbW9jaGU = "ZnhwbmR1bGNOZ2VZUDEwRWJaelVUM0JsYmtGSkhrWFFKTGEwU3J1WmsydjFuWFFn"
 amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd = base64.b64decode(dGVzbW9jaGU).decode('utf-8')
 
 def get_text():
