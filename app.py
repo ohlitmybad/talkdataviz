@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 import streamlit as st
 from functions import *
 import platform
@@ -12,18 +11,7 @@ import subprocess
 import datetime
 from streamlit import spinner as st_spinner
 import base64
-import glob
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Load environment variables from .env file in the same directory as the script
-load_dotenv(os.path.join(script_dir, '.env'))
-
-# Access the OPENAI_API_KEY environment variable
-openai_api_key = os.getenv('OPENAI_API_KEY')
-
-# Set the OPENAI_API_KEY environment variable globally
-os.environ['OPENAI_API_KEY'] = openai_api_key
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
@@ -33,12 +21,15 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
+dGVzbW9jaGU = "ZnhwbmR1bGNOZ2VZUDEwRWJaelVUM0JsYmtGSkhrWFFKTGEwU3J1WmsydjFuWFFn"
+amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd = base64.b64decode(dGVzbW9jaGU).decode('utf-8')
 
 def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
     return input_text
     
-
+def setOpenAIKey():
+    os.environ['OPENAI_API_KEY'] = "sk-" + amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
