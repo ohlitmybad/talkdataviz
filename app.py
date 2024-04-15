@@ -12,6 +12,7 @@ import subprocess
 import datetime
 from streamlit import spinner as st_spinner
 import base64
+import glob
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,6 +21,9 @@ load_dotenv(os.path.join(script_dir, '.env'))
 
 # Access the OPENAI_API_KEY environment variable
 openai_api_key = os.getenv('OPENAI_API_KEY')
+
+# Set the OPENAI_API_KEY environment variable globally
+os.environ['OPENAI_API_KEY'] = openai_api_key
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
@@ -34,8 +38,7 @@ def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
     return input_text
     
-def setOpenAIKey():
-    os.environ['OPENAI_API_KEY'] = openai_api_key
+
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
