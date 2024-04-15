@@ -21,7 +21,7 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-dGVzbW9jaGU = "ZnhwbmR1bGNOZ2VZUDEwRWJaelVUM0JsYmtGSkhrWFFKTGEwU3J1WmsydjFuWFFn"
+dGVzbW9jaGU = "c2stbGhoTk5Za2JMRDVQM0ZZdnY5SWRUM0JsYmtGSlFvVHlKdUdRRGZrOTlwN29KdW41"
 amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd = base64.b64decode(dGVzbW9jaGU).decode('utf-8')
 
 def get_text():
@@ -29,7 +29,7 @@ def get_text():
     return input_text
     
 def setOpenAIKey():
-    os.environ['OPENAI_API_KEY'] = "sk-" + amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd
+    os.environ['OPAGANG'] = "sk-" + amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
