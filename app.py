@@ -21,16 +21,11 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 10
 
-dGVzbW9jaGU = "YTBSZmRSTW41Mk52MTRCcnJpU3BUM0JsYmtGSnA4ajVDeHpMSkVvODE5U3FhR0FW"
-amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd = base64.b64decode(dGVzbW9jaGU).decode('utf-8')
 
 def get_text():
     input_text = st.text_area('', value="", placeholder='Enter query here ...')
     return input_text
     
-def setOpenAIKey():
-    os.environ['OPENAI_API_KEY'] = "sk-" + amVwdXB1cGF0dXB1amVwdXB1cGF0dXB1R1AydklwNTJzV1RRU0FqRnRBeHlUM0JsYmtGSm5qUThqR1A4ZWZsWWpZSEp1VFNoamVwdXB1cGF0dXB1amVwd
-
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
         for line in users_file:
@@ -86,7 +81,7 @@ def custom_image_selector(imgs_):
 
 def main():
     st.title("DataMB Chat ⚽📊")
-    setOpenAIKey()
+    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
     agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
