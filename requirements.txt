@@ -9,4 +9,4 @@ pygal
 plotly
 plotnine
 kaleido
-dotenv
+python-dotenv
