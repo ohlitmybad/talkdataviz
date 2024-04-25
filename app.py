@@ -151,7 +151,7 @@ if user_exists(username):
 
         else:
             st.error('Daily query limit (10) reached for this user.')
-    else:
+else:
         st.error('User not found. Check your username in your DataMB Pro account.')
 
 
