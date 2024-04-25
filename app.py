@@ -13,29 +13,6 @@ from streamlit import spinner as st_spinner
 import base64
 
 
-st.set_page_config(page_title="DataMB Chat")    
-st.markdown("""
-    <style>
-    .stApp {
-        background-color: #000000;
-        color: #FFFFFF;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-
-# Centering the image horizontally
-st.markdown(
-    f'<div style="text-align:center;"><img src="https://datamb.football/logochat.png" width="50"></div>',
-    unsafe_allow_html=True
-)
-st.markdown(
-    '<h1 style="text-align: center;">DataMB Chat</h1>',
-    unsafe_allow_html=True
-)
-
-
-
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
 
@@ -102,7 +79,6 @@ def custom_image_selector(imgs_):
         return image_select("", imgs_, captions=imgs_, return_value='index')
 
 
-def main():
 def main():
     st.title("DataMB Chat ⚽📊")
     OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
