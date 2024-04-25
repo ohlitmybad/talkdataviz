@@ -107,7 +107,7 @@ def main():
     # User login
     username = st.text_input('', placeholder='Username')
     
-    if st.button('Load visuals', key="load_button"):
+    if st.button('Load visuals', key="load_button", style="color: red;"):
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
