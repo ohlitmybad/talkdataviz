@@ -12,7 +12,7 @@ import datetime
 from streamlit import spinner as st_spinner
 import base64
 
-st.set_page_config(page_title="DataMB Chat")    
+st.set_page_config(page_title="DataMB Viz Chat")    
 st.markdown("""
     <style>
     .stApp {
@@ -28,7 +28,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.markdown(
-    '<h1 style="text-align: center;">DataMB Chat</h1>',
+    '<h1 style="text-align: center;">DataMB Viz Chat</h1>',
     unsafe_allow_html=True
 )
 
