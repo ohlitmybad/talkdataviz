@@ -16,7 +16,7 @@ st.set_page_config(page_title="DataMB Viz Chat")
 st.markdown("""
     <style>
     .stApp {
-        background-color: #000000;
+        background-color: #FFFFFF;
     }
     </style>
     """, unsafe_allow_html=True)
