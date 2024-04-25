@@ -80,9 +80,9 @@ def custom_image_selector(imgs_):
 
 
 def main():
-st.set_page_config(page_title="DataMB Chat")
+    st.set_page_config(page_title="DataMB Chat")
 
-st.markdown("""
+    st.markdown("""
     <style>
     .stApp {
         background-color: #000000;
@@ -93,15 +93,16 @@ st.markdown("""
 
 
 # Centering the image horizontally
-st.markdown(
+    st.markdown(
     f'<div style="text-align:center;"><img src="https://datamb.football/logochat.png" width="50"></div>',
     unsafe_allow_html=True
 )
-st.markdown(
+    st.markdown(
     '<h1 style="text-align: center;">DataMB Chat</h1>',
     unsafe_allow_html=True
 )
-OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+
+    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
     agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
