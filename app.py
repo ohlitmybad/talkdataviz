@@ -102,7 +102,7 @@ def main():
     unsafe_allow_html=True
 )
 
-    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
     agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
