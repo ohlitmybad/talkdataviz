@@ -103,15 +103,15 @@ def custom_image_selector(imgs_):
 
 
 def main():
-
-
+def main():
+    st.title("DataMB Chat ⚽📊")
     OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
-agent, selected_df, selected_df_names = save_uploaded_file()
+    agent, selected_df, selected_df_names = save_uploaded_file()
 
     # User login
-username = st.text_input('', placeholder='Username')
+    username = st.text_input('', placeholder='Username')
     
-if st.button('Load visuals'):
+    if st.button('Load visuals'):
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
@@ -119,16 +119,16 @@ if st.button('Load visuals'):
             subprocess.Popen(["explorer", current_dir])
         else:
             print("Directory opened:", current_dir)
-imgs_png = glob.glob('*.png')
-imgs_jpg = glob.glob('*.jpg')
-imgs_jpeeg = glob.glob('*.jpeg')
-imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
+    imgs_png = glob.glob('*.png')
+    imgs_jpg = glob.glob('*.jpg')
+    imgs_jpeeg = glob.glob('*.jpeg')
+    imgs_ = imgs_png + imgs_jpg + imgs_jpeeg
     
-custom_image_selector(imgs_)
+    custom_image_selector(imgs_)
     
-query_counts = load_query_counts()
+    query_counts = load_query_counts()
 
-if user_exists(username):
+    if user_exists(username):
         if not is_query_limit_reached(username, query_counts):
 
             user_input = get_text()
@@ -154,7 +154,7 @@ if user_exists(username):
 
         else:
             st.error('Daily query limit (10) reached for this user.')
-else:
+    else:
         st.error('User not found. Check your username in your DataMB Pro account.')
 
 
