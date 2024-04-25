@@ -107,7 +107,7 @@ def main():
     # User login
     username = st.text_input('', placeholder='Username')
     
-    if st.button('Load visuals', key="load_button", style="color: red;"):
+    if '<style>#load_button {color: red;}</style><button id="load_button" onclick="window.location.href=\'load_visuals\'">Load visuals</button>' in st.markdown:
         current_dir = os.getcwd()
         if platform.system() == "Darwin":  # macOS
             subprocess.Popen(["open", current_dir])
@@ -129,7 +129,7 @@ def main():
 
             user_input = get_text()
 
-            if st.button('Query', key="query_button"):
+            if '<style>#query_button {color: blue;}</style><button id="query_button" onclick="window.location.href=\'query\'">Query</button>' in st.markdown:
                 with st_spinner(""):  # Use st_spinner to display a spinner while processing the query
                     response, thought, action, action_input, observation = run_query(agent, user_input)
                 st.session_state.past.append(user_input)
