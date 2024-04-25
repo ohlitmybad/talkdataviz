@@ -12,15 +12,7 @@ import datetime
 from streamlit import spinner as st_spinner
 import base64
 
-# Centering the image horizontally
-st.markdown(
-    f'<div style="text-align:center;"><img src="https://datamb.football/logochat.png" width="50"></div>',
-    unsafe_allow_html=True
-)
- st.markdown(
-    '<h1 style="text-align: center;">DataMB Chat</h1>',
-    unsafe_allow_html=True
-)
+
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
