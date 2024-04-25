@@ -13,6 +13,8 @@ from streamlit import spinner as st_spinner
 import base64
 
 
+st.set_page_config(page_title="DataMB Chat")
+
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
 
@@ -80,7 +82,6 @@ def custom_image_selector(imgs_):
 
 
 def main():
-    st.set_page_config(page_title="DataMB Chat")
 
     st.markdown("""
     <style>
