@@ -11,6 +11,7 @@ import subprocess
 import datetime
 from streamlit import spinner as st_spinner
 import base64
+import time
 
 st.set_page_config(page_title="DataMB Viz Chat")    
 st.markdown("""
@@ -153,6 +154,23 @@ def main():
         st.error('User not found. Check your username in your DataMB Pro account.')
 
 
+
+file_path = 'users.txt'
+
+# Function to get the last modified time of the file
+def get_file_last_modified_time(path):
+    return os.path.getmtime(path)
+
+# Initialize the last modified time
+if 'last_modified_time' not in st.session_state:
+    st.session_state.last_modified_time = get_file_last_modified_time(file_path)
+
+# Monitor the file
+current_modified_time = get_file_last_modified_time(file_path)
+
+if current_modified_time != st.session_state.last_modified_time:
+    st.session_state.last_modified_time = current_modified_time
+    st.experimental_rerun()
 
 if __name__ == "__main__":
     if 'generated' not in st.session_state:
