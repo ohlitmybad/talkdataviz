@@ -43,7 +43,7 @@ DAILY_QUERY_LIMIT = 10
 
 
 def get_text():
-    input_text = st.text_area('', value="", placeholder='Enter query here ...')
+    input_text = st.text_area('', value="", placeholder='What would you like to draw? • 你想画什么？• ماذا تريد أن ترسم؟')
     return input_text
     
 def user_exists(username):
