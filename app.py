@@ -49,7 +49,10 @@ def get_text():
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
         for line in users_file:
-            user, _ = line.strip().split(':')
+            line = line.strip()        # Add this line
+            if not line:               # Add this line
+                continue               # Add this line
+            user, _ = line.split(':')  # Remove .strip() since we already did it above
             if user == username:
                 return True
     return False
